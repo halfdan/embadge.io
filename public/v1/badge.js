@@ -1,6 +1,6 @@
 (function() {
   var elements = document.getElementsByClassName('embadge'),
-      url = '/v1/badge.svg';
+      url = '//embadge.io/v1/badge.svg';
   for (i=0; i < elements.length; i++) {
     var img = document.createElement('img'),
         el = elements[i];
