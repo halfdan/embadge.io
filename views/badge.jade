@@ -1,0 +1,14 @@
+doctype xml
+svg(xmlns='http://www.w3.org/2000/svg', width='#{width}', height='20')
+  lineargradient#a(x2='0', y2='100%')
+    stop(offset='0', stop-color='#bbb', stop-opacity='.1')
+    stop(offset='1', stop-opacity='.1')
+  rect(rx='3', width='#{width}', height='20', fill='#555')
+  rect(rx='3', x='102', width='#{versionWidth}', height='20', fill='#fe845a')
+  path(fill='#fe845a', d='M102 0h4v20h-4z')
+  rect(rx='3', width='#{width}', height='20', fill='url(#a)')
+  g(fill='#fff', text-anchor='middle', font-family='DejaVu Sans,Verdana,Geneva,sans-serif', font-size='11')
+    text(x='52', y='15', fill='#010101', fill-opacity='.3') ember-versions
+    text(x='52', y='14') ember-versions
+    text(x='#{textPosition}', y='15', fill='#010101', fill-opacity='.3') #{versionString}
+    text(x='#{textPosition}', y='14') #{versionString}

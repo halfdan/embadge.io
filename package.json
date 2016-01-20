@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "semver": "^5.1.0",
+    "express": "^4.13.3",
+    "jade": "^1.11.0"
+  }
+}
