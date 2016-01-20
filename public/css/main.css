@@ -1,0 +1,54 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: white;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+}
+
+#content {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px;
+}
+
+h1, h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+  font-size: 72px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  color: #444;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+li {
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+a {
+  color: #d01040;
+}
+
+a:visited {
+  color: rgba(208, 16, 64, 0.6);
+}

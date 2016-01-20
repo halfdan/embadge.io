@@ -29,7 +29,7 @@ function buildVersionString(start, end, range) {
 }
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.render('index');
 });
 
 app.get('/v1/badge.svg', function (req, res) {
