@@ -19,7 +19,7 @@ gem 'rake'
 # Component requirements
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
-
+gem 'haml'
 # Test requirements
 
 # Padrino Stable Gem
