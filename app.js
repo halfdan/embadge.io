@@ -1,11 +1,42 @@
 var semver = require('semver');
 var express = require('express');
+var expressSession = require('express-session');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var GitHubStrategy = require('passport-github2');
+passport.use(new GitHubStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: process.env.HOST_URL + '/callback',
+  },
+  function(accessToken, refreshToken, profile, done) {
+    console.log(JSON.stringify(profile));
+    done(null, profile);
+  }
+));
+
 var app = express();
+app.use(express.static('public'));
+app.use(cookieParser());
+app.use(bodyParser());
+app.use(expressSession({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set('views', './views');
 app.set('view engine', 'jade');
-app.use(express.static('public'));
 app.disable('x-powered-by');
+
+app.get('/login',
+  passport.authenticate('github', { scope: [ 'user:email' ] }));
+
+app.get('/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 function buildVersionString(start, end, range) {
   var versionString;
@@ -52,6 +83,7 @@ app.get('/v1/badge.svg', function (req, res) {
     labelPosition: separator / 2
   });
 });
+
 
 app.listen(3000, function () {
   console.log('Listening on port 3000!');

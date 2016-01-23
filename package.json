@@ -2,6 +2,11 @@
   "dependencies": {
     "semver": "^5.1.0",
     "express": "^4.13.3",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "passport-github2": "^0.1.9",
+    "passport": "^0.3.2",
+    "cookie-parser": "^1.4.1",
+    "body-parser": "^1.14.2",
+    "express-session": "^1.13.0"
   }
 }
