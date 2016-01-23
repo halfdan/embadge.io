@@ -1,82 +1,74 @@
-doctype html
-html
-  head
-    title embadge.io
-    link(href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700', rel='stylesheet', type='text/css')
-    link(href='/css/main.css', rel='stylesheet', type='text/css')
-  body
-    a(href="https://github.com/halfdan/embadge.io")
-      img(style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub")
-    #content
-      h1 embadge.io
-      p
-        | embadge.io is a simple Ember.js badge generator service.
-        | It provides a simple to use API.
-        |  It's inspired by Matthew Beale's
-        a(href='https://github.com/mixonic/ember-community-versions') Ember Community Versions
-        |  and is open-sourced
-        a(href='https://github.com/halfdan/embadge.io') on Github
+extends layout
 
-      h2#examples Examples
-      ul
-        li
-          | With start version:
-          br
-          img(src="//embadge.io/v1/badge.svg?start=1.13.0")
-        li
-          | With start and end version:
-          br
-          img(src="//embadge.io/v1/badge.svg?start=1.13.0&end=2.0.0")
-        li
-          | With range:
-          br
-          img(src="//embadge.io/v1/badge.svg?range=^2.3.0")
-        li
-          | With custom label:
-          br
-          img(src="//embadge.io/v1/badge.svg?label=ember-cli&start=1.13.13")
-        li
-          | With custom label and range:
-          br
-          img(src="//embadge.io/v1/badge.svg?label=ember-data&range=^2.3.0")
+block content
+  p
+    | embadge.io is a simple Ember.js badge generator service.
+    | It provides a simple to use API.
+    |  It's inspired by Matthew Beale's
+    a(href='https://github.com/mixonic/ember-community-versions') Ember Community Versions
+    |  and is open-sourced
+    a(href='https://github.com/halfdan/embadge.io') on Github
 
-      h2#usage Usage
-      p
-        | The embadge.io API supports four different parameters.
-      ul
-        li
-          pre
-            | label
-          | Used to define the text label shown on the badge (default: 'ember-versions')
-        li
-          pre
-            | start
-          | Valid semver string noting the earliest supported version.
-        li
-          pre
-            | end
-          | (Optional) Valid semver string noting the last supported version.
-        li
-          pre
-            | range
-          | (Optional) Valid semver range (e.g. "^2.3.0") noting a supported range of versions. If given, <code>start</code> and <code>end</code> will be ignored.
-      p
-        | The API supports HTTPS and is accessed from is <code>https://embadge.io/v1/badge.svg</code>
-      h3#browser Browser
-      p
-        | In order to easily add embadge.io to your website you can include the following script in the body:
-      code
-        pre
-          | &lt;script src="//embadge.io/v1/badge.js" type="text/javascript"&gt;&lt;/script&gt;
-      p
-        | This will search your page for <code>span</code> elements with the <code>embadge</code> class and use data attributes to generate the image URL.
-      code
-        pre
-          | &lt;span class="embadge" data-start="2.3.0"&gt;&lt;span&gt;
+  h2#examples Examples
+  ul
+    li
+      | With start version:
+      br
+      img(src="//embadge.io/v1/badge.svg?start=1.13.0")
+    li
+      | With start and end version:
+      br
+      img(src="//embadge.io/v1/badge.svg?start=1.13.0&end=2.0.0")
+    li
+      | With range:
+      br
+      img(src="//embadge.io/v1/badge.svg?range=^2.3.0")
+    li
+      | With custom label:
+      br
+      img(src="//embadge.io/v1/badge.svg?label=ember-cli&start=1.13.13")
+    li
+      | With custom label and range:
+      br
+      img(src="//embadge.io/v1/badge.svg?label=ember-data&range=^2.3.0")
 
-      h2#links Links
-      ul
-        li
-          a(href="http://emberup.co/dynamic-component-rendering/") Dynamic component rendering
-        li
-          a(href='https://github.com/mixonic/ember-community-versions') Ember Community Versions
+  h2#usage Usage
+  p
+    | The embadge.io API supports four different parameters.
+  ul
+    li
+      pre
+        | label
+      | Used to define the text label shown on the badge (default: 'ember-versions')
+    li
+      pre
+        | start
+      | Valid semver string noting the earliest supported version.
+    li
+      pre
+        | end
+      | (Optional) Valid semver string noting the last supported version.
+    li
+      pre
+        | range
+      | (Optional) Valid semver range (e.g. "^2.3.0") noting a supported range of versions. If given, <code>start</code> and <code>end</code> will be ignored.
+  p
+    | The API supports HTTPS and is accessed from is <code>https://embadge.io/v1/badge.svg</code>
+  h3#browser Browser
+  p
+    | In order to easily add embadge.io to your website you can include the following script in the body:
+  code
+    pre
+      | &lt;script src="//embadge.io/v1/badge.js" type="text/javascript"&gt;&lt;/script&gt;
+  p
+    | This will search your page for <code>span</code> elements with the <code>embadge</code> class and use data attributes to generate the image URL.
+  code
+    pre
+      | &lt;span class="embadge" data-start="2.3.0"&gt;&lt;span&gt;
+
+  h2#links Links
+  ul
+    li
+      a(href="http://emberup.co/dynamic-component-rendering/") Dynamic component rendering
+    li
+      a(href='https://github.com/mixonic/ember-community-versions') Ember Community Versions
