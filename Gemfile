@@ -38,3 +38,5 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 gem 'semantic_range'
+
+gem 'unirest'

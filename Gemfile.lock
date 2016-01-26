@@ -14,6 +14,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     arel (6.0.3)
     builder (3.2.2)
     enumerable-lazy (0.0.1)
@@ -88,6 +89,8 @@ GEM
     rack-protection (1.5.3)
       rack
     rake (10.4.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     semantic_range (1.0.0)
     sinatra (1.4.6)
       rack (~> 1.4)
@@ -99,6 +102,10 @@ GEM
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    unirest (1.1.2)
+      addressable (~> 2.3.5)
+      json (~> 1.8.1)
+      rest-client (~> 1.6.7)
 
 PLATFORMS
   ruby
@@ -112,3 +119,4 @@ DEPENDENCIES
   rake
   semantic_range
   sqlite3
+  unirest

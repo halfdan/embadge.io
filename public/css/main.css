@@ -22,7 +22,7 @@ h1, h2, h3, h4 {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-h1 a {
+h1 a, h1 a:hover, h1 a:visited {
   text-decoration: none;
   color: inherit;
 }
@@ -50,11 +50,11 @@ li {
   font-size: 18px;
 }
 
-main a {
+main a, main a:hover, main a:visited {
   color: #d01040;
 }
 
-a.btn {
+a.btn, a:visited.btn, a:hover.btn {
   color: #fff;
   background-color: #444;
   border-color: rgba(0,0,0,0.2);
