@@ -7,7 +7,11 @@ Embadge::App.controllers :badges do
 
   get :show, with: :id do
     @badge = Badge.find_by_id(params[:id])
-    render 'show'
+    if @badge
+      render 'show'
+    else
+      status 404
+    end
   end
 
   # Renders badge based on GET-Params
@@ -23,7 +27,7 @@ Embadge::App.controllers :badges do
     expires 30
     @badge = Badge.find_by_id(params[:id])
 
-    options = badge_config(@badge)
+    options = badge_config(@badge.definition)
 
     content_type 'image/svg+xml'
     render 'render', layout: false, locals: options
@@ -48,14 +52,21 @@ Embadge::App.controllers :badges do
     if @badge.user == current_user
       render 'edit'
     else
+      status 401
       flash[:error] = "You are not allowed to edit this badge"
     end
   end
 
   get :new do
-    @badge = Badge.new
-    @badge.badge_infos.build
-    render :new
+    if is_logged_in?
+      @badge = Badge.new
+      @badge.badge_infos.build
+      render :new
+    else
+      status 401
+      flash[:error] = "You need to log in to create a badge."
+      redirect(url(:static, :index))
+    end
   end
 
   delete :delete, with: :id do

@@ -7,9 +7,9 @@ module Embadge
 
       end
 
-      def badge_config badge
-        versionString = version_string(badge.definition)
-        labelText = badge.label || 'ember-versions'
+      def badge_config params
+        versionString = version_string(params)
+        labelText = params[:label] || 'ember-versions'
         separator = (labelText.length + 4) * 6
         width = separator + (versionString.length + 4) * 6
         versionWidth = width - separator
@@ -24,7 +24,7 @@ module Embadge
           versionWidth: versionWidth,
           textPosition: textPosition,
           labelPosition: labelPosition,
-          badge: badge
+          params: params
         }
       end
 
