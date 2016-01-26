@@ -11,9 +11,31 @@
     %span{class:"fa fa-github"}
     Sign in with Github
 
+%h2#github Github Badges
+%p The embadge API supports generating badges for your Ember projects on Github. The API for github badges is
+
+%pre https://embadge.io/v1/:user/:repo/:branch/:package.svg
+
+%dl.dl-horizontal
+  %dt user
+  %dd Your Github username or organization.
+
+  %dt repo
+  %dd The name of your repository.
+
+  %dt branch
+  %dd The branch you want to create the badge for (e.g. master).
+
+  %dt package
+  %dd The package from your package.json you want the badge for. This will also be your default label.
+
+Optionally you can also pass an optional <code>label</code> GET-parameter that will replace the label shown on the badge.
 
 %h2#static Static Badges
 %p In case you want to use a static badge and specify version information yourself, you can use the embadge.io API. It supports four different parameters.
+
+%p The API supports HTTPS and is accessed from is
+%pre https://embadge.io/v1/badge.svg?param=...
 
 %dl.dl-horizontal
   %dt label
@@ -27,9 +49,6 @@
 
   %dt range
   %dd (Optional) Valid semver range (e.g. "^2.3.0") noting a supported range of versions. If given, "start" and "end" will be ignored
-
-%p The API supports HTTPS and is accessed from is
-%code https://embadge.io/v1/badge.svg
 
 %h2#examples Examples
 %dl.dl-horizontal
