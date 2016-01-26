@@ -20,6 +20,7 @@ gem 'rake'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 gem 'haml'
+
 # Test requirements
 
 # Padrino Stable Gem
@@ -32,3 +33,8 @@ gem 'padrino', '0.13.1'
 # %w(core support gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.13.1'
 # end
+
+gem 'omniauth'
+gem 'omniauth-github'
+
+gem 'semantic_range'

@@ -13,5 +13,5 @@
       }
     }
     el.appendChild(img);
-  };
+  }
 })();

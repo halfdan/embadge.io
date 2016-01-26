@@ -1,0 +1,15 @@
+!!! XML
+%svg{height: "20", width: width, xmlns: "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+  %a{"xlink:href"=> url(:badges, :show, id: badge.id), target: '_blank'}
+    %lineargradient#a{x2: "0", y2: "100%"}
+      %stop{offset: "0", "stop-color" => "#bbb", "stop-opacity" => ".1"}
+      %stop{offset: "1", "stop-opacity" => ".1"}
+    %rect{fill: "#555", height: "20", rx: "3", width: width}
+    %rect{fill: "#fe845a", height: "20", rx: "3", width: versionWidth, x: separator}
+    %path{d: "M#{separator} 0h4v20h-4z", fill: "#fe845a"}
+    %rect{fill: "url(#a)", height: "20", rx: "3", width: width}
+    %g{fill: "#fff", "font-family" => "DejaVu Sans,Verdana,Geneva,sans-serif", "font-size" => "11", "text-anchor" => "middle"}
+      %text{fill: "#010101", "fill-opacity" => ".3", x: labelPosition, y: "15"}= labelText
+      %text{x: labelPosition, y: "14"}= labelText
+      %text{fill: "#010101", "fill-opacity" => ".3", x: textPosition, y: "15"}= versionString
+      %text{x: textPosition, y: "14"}= versionString

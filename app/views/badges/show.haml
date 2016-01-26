@@ -1,0 +1,25 @@
+%h2 Badge Info
+
+%p
+  %object{data: "/b/#{@badge.id}.svg", type: "image/svg+xml"}
+
+%p
+  This badge was created by
+  = link_to "@#{@badge.user.handle}", "https://github.com/#{@badge.user.handle}"
+  = time_ago_in_words @badge.created_at
+  ago.
+
+%p
+  It is used in
+  = link_to @badge.title, @badge.url, rel: 'nofollow'
+%p
+  Think this information is incorrect? Propose a change!
+
+%h3 Embed
+%p Embed this badge in your site:
+%pre
+  &lt;object data="#{absolute_url(:badges, :render, id: @badge.id, format: :svg)}" type="image/svg+xml"&gt;&lt;/object&gt;
+
+- if is_logged_in?
+  %hr
+  %p= link_to "My badges", url(:badges, :index)

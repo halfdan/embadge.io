@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 4) do
 
   create_table "badge_infos", force: :cascade do |t|
-    t.integer  "badge_id_id"
-    t.boolean  "is_active"
+    t.integer  "badge_id"
     t.integer  "created_by"
+    t.boolean  "is_current"
     t.string   "version_start"
     t.string   "version_end"
     t.string   "version_range"
@@ -25,15 +25,21 @@ ActiveRecord::Schema.define(version: 4) do
   end
 
   create_table "badges", force: :cascade do |t|
-    t.integer  "user_id_id"
+    t.integer  "user_id"
     t.string   "uuid"
     t.string   "label"
+    t.string   "title"
+    t.string   "url"
+    t.boolean  "is_public"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.string   "provider"
+    t.integer  "uid"
+    t.string   "handle"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"

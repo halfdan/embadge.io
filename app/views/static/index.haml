@@ -1,63 +1,65 @@
 %p
-  embadge.io is a simple Ember.js badge generator service.
-  It provides a simple to use API.
-  It's inspired by Matthew Beale's 
+  embadge.io is a simple Ember.js community badge service.
+  It's inspired by Matthew Beale's
   %a{:href => "https://github.com/mixonic/ember-community-versions"} Ember Community Versions
-  and is open-sourced 
+  and is open-sourced
   %a{:href => "https://github.com/halfdan/embadge.io"} on Github
-%h2#examples Examples
-%ul
-  %li
-    With start version:
-    %br/
-    %a{:href => "//embadge.io/v1/badge.svg?start=1.13.0"}
-      %img{:src => "//embadge.io/v1/badge.svg?start=1.13.0"}/
-  %li
-    With start and end version:
-    %br/
-    %a{:href => "//embadge.io/v1/badge.svg?start=1.13.0&end=2.0.0"}
-      %img{:src => "//embadge.io/v1/badge.svg?start=1.13.0&end=2.0.0"}/
-  %li
-    With range:
-    %br/
-    %a{:href => "//embadge.io/v1/badge.svg?range=^2.3.0"}
-      %img{:src => "//embadge.io/v1/badge.svg?range=^2.3.0"}/
-  %li
-    With custom label:
-    %br/
-    %a{:href => "//embadge.io/v1/badge.svg?label=ember-cli&start=1.13.13"}
-      %img{:src => "//embadge.io/v1/badge.svg?label=ember-cli&start=1.13.13"}/
-  %li
-    With custom label and range:
-    %br/
-    %a{:href => "//embadge.io/v1/badge.svg?label=ember-data&range=^2.3.0"}
-      %img{:src => "//embadge.io/v1/badge.svg?label=ember-data&range=^2.3.0"}/
-%h2#usage Usage
-%p The embadge.io API supports four different parameters.
-%ul
-  %li
-    %pre> label
-    Used to define the text label shown on the badge (default: 'ember-versions')
-  %li
-    %pre> start
-    Valid semver string noting the earliest supported version.
-  %li
-    %pre> end
-    (Optional) Valid semver string noting the last supported version.
-  %li
-    %pre> range
-    (Optional) Valid semver range (e.g. "^2.3.0") noting a supported range of versions. If given,
-    %code start
-    and
-    %code end
-    will be ignored.
 %p
-  The API supports HTTPS and is accessed from is
-  %code https://embadge.io/v1/badge.svg
+  Create a badge, embed it in your post, maintain it and let the community update the badge when its information is out of date.
+%p
+  %a{class:"btn", href: '/auth/github'}
+    %span{class:"fa fa-github"}
+    Sign in with Github
+
+
+%h2#static Static Badges
+%p In case you want to use a static badge and specify version information yourself, you can use the embadge.io API. It supports four different parameters.
+
+%dl.dl-horizontal
+  %dt label
+  %dd Used to define the text label shown on the badge (default: 'ember-versions')
+
+  %dt start
+  %dd Valid semver string noting the earliest supported version.
+
+  %dt end
+  %dd (Optional) Valid semver string noting the last supported version.
+
+  %dt range
+  %dd (Optional) Valid semver range (e.g. "^2.3.0") noting a supported range of versions. If given, "start" and "end" will be ignored
+
+%p The API supports HTTPS and is accessed from is
+%code https://embadge.io/v1/badge.svg
+
+%h2#examples Examples
+%dl.dl-horizontal
+  %dt Start version
+  %dd
+    %a{:href => "/v1/badge.svg?start=1.13.0"}
+      %img{:src => "/v1/badge.svg?start=1.13.0"}/
+  %dt Start and end version
+  %dd
+    %a{:href => "/v1/badge.svg?start=1.13.0&end=2.0.0"}
+      %img{:src => "/v1/badge.svg?start=1.13.0&end=2.0.0"}/
+  %dt Range
+  %dd
+    %a{:href => "/v1/badge.svg?range=^2.3.0"}
+      %img{:src => "/v1/badge.svg?range=^2.3.0"}/
+  %dt Custom label
+  %dd
+    %a{:href => "/v1/badge.svg?label=ember-cli&start=1.13.13"}
+      %img{:src => "/v1/badge.svg?label=ember-cli&start=1.13.13"}/
+  %dt Custom label & range
+  %dd
+    %a{:href => "/v1/badge.svg?label=ember-data&range=^2.3.0"}
+      %img{:src => "/v1/badge.svg?label=ember-data&range=^2.3.0"}/
+
 %h3#browser Browser
 %p In order to easily add embadge.io to your website you can include the following script in the body:
 %code
-  %pre <script src="//embadge.io/v1/badge.js" type="text/javascript"></script>
+  &lt;script src="//embadge.io/v1/badge.js" type="text/javascript"&gt;&lt;/script&gt;
+%br/
+%br/
 %p
   This will search your page for
   %code span
@@ -65,7 +67,7 @@
   %code embadge
   class and use data attributes to generate the image URL.
 %code
-  %pre <span class="embadge" data-start="2.3.0"><span>
+  &lt;span class="embadge" data-start="2.3.0"&gt;&t;span&gt;
 %h2#links Links
 %ul
   %li

@@ -2,8 +2,9 @@ class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
       t.string :name
-      t.integer :github_id
-      t.integer :github_handle
+      t.string :provider
+      t.integer :uid
+      t.string :handle
       t.string :email
       t.timestamps
     end
