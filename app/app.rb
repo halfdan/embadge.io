@@ -6,11 +6,14 @@ module Embadge
 
     enable :sessions
 
+    use OmniAuth::Builder do
+      provider :github, ENV["GITHUB_CLIENT_ID"], ENV["GITHUB_CLIENT_SECRET"]
+    end
     ##
     # Caching support.
     #
-    # register Padrino::Cache
-    # enable :caching
+    register Padrino::Cache
+    enable :caching
     #
     # You can customize caching store engines:
     #
