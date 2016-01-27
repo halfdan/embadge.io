@@ -11,15 +11,25 @@ Embadge::App.controllers :changes do
     end
   end
 
-  post :create do
-    @info = BadgeChange.new(params[:badge])
-    @info.user = current_user
+  post :create, map: '/badges/:id/change/' do
+    if is_logged_in?
+      @change = BadgeChange.new(params[:badge_change])
+      @badge = Badge.find params[:id]
+      @change.badge = @badge
+      @change.user = current_user
 
-    if @info.save
-      redirect(url(:badges, :show, id: @info.badge.id))
-    else
-      flash.now[:error] = "Nope"
-      render 'changes/new'
+      if @change.save
+        redirect(url(:badges, :show, id: @change.badge.id))
+      else
+        flash.now[:error] = "Nope"
+        render 'changes/new'
+      end
     end
+  end
+
+  put :accept, map: '/badges/:badge_id/change/:change_id/accept' do
+  end
+
+  put :reject, map: '/badges/:badge_id/change/:change_id/reject' do
   end
 end

@@ -29,16 +29,16 @@ module Embadge
       end
 
       def version_string object
-        if object[:start] && SemanticRange.valid(object[:start])
+        if object[:start].present? && SemanticRange.valid(object[:start])
           str = object[:start]
-          if object[:end] && SemanticRange.valid(object[:end]) && SemanticRange.lt(object[:start], object[:end])
+          if object[:end].present? && SemanticRange.valid(object[:end]) && SemanticRange.lt(object[:start], object[:end])
             str += ' - ' + object[:end]
-          elsif object[:end] && (!SemanticRange.valid(object[:end]) || !SemanticRange.lt(object[:start], object[:end]))
+          elsif object[:end].present? && (!SemanticRange.valid(object[:end]) || !SemanticRange.lt(object[:start], object[:end]))
             str = 'Invalid'
           else
             str += '+'
           end
-        elsif object[:range] && SemanticRange.valid_range(object[:range])
+        elsif object[:range].present? && SemanticRange.valid_range(object[:range])
           str = SemanticRange.valid_range object[:range]
         else
           str = 'Invalid'

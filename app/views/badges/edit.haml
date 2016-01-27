@@ -1,2 +1,4 @@
 %h2 Edit badge
-= partial 'badges/form', locals: {badge: @badge}
+= flash_tag(:error)
+= form_for @badge, url(:badges, :update, id: @badge.id), id: 'update_badge', method: :put do |f|
+  = partial 'badges/form', locals: {f: f}

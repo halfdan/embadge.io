@@ -31,6 +31,12 @@
 
 Optionally you can also pass an optional <code>label</code> GET-parameter that will replace the label shown on the badge.
 
+Embadge heavily caches badges generated for Github repositories. It is therefore recommended to
+%a{href: "https://developer.github.com/webhooks/creating/"} set up a webhook
+to invalidate our cache and update your badge:
+
+%pre https://embadge.io/v1/webhook
+
 %h2#static Static Badges
 %p In case you want to use a static badge and specify version information yourself, you can use the embadge.io API. It supports four different parameters.
 

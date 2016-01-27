@@ -14,7 +14,11 @@
   It is used in
   = link_to @badge.title, @badge.url, rel: 'nofollow'
 %p
-  Think this information is incorrect? Propose a change!
+  Think this badge is incorrect?
+  - if @badge.user == current_user
+    %a{href: url(:badges, :edit, id: @badge.id)} Edit the badge!
+  - else
+    %a{href: url(:changes, :new, id: @badge.id)} Propose a change!
 
 %h3 Embed
 %p Embed this badge in your site:
@@ -23,9 +27,37 @@
 
 %h3 Proposed changes
 
+- if @badge.badge_changes.proposed.length > 0
+  %table.table
+    %thead
+      %tr
+        %th Badge
+        %th Author
+        %th Comment
+        %th Time
+        %th
+    %tbody
+    - @badge.badge_changes.proposed.each do |change|
+      %tr
+        %td
+          %img{src: url(:badges, :static, start: change.version_start, end: change.version_end, range: change.version_end, format: :svg)}
+        %td
+          = change.user.handle
+        %td
+          = change.comment
+        %td
+          = time_ago_in_words change.created_at
+          ago
+        %td
+          - if is_logged_in? && change.user != current_user
+            %button.btn.btn-xs.btn-primary +1
+          - if is_logged_in? && @badge.user == current_user
+            %button.btn.btn-success.btn-xs Apply
+            %button.btn.btn-danger.btn-xs Reject
 
-The author will be notified of your proposed change to this badge. They can then either accept or reject your change. Other users can vote for your change. Once a proposed change has reached 3 votes it will be automatically accepted.
 
+- else
+  There are currently no proposed changes to this badge.
 
 - if is_logged_in?
   %hr

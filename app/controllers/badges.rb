@@ -10,6 +10,17 @@ Embadge::App.controllers :badges do
     end
   end
 
+  get :new do
+    if is_logged_in?
+      @badge = Badge.new
+      render :new
+    else
+      status 401
+      flash[:error] = "You need to log in to create a badge."
+      redirect(url(:static, :index))
+    end
+  end
+
   get :show, with: :id, map: '/badges' do
     @badge = Badge.find_by_id(params[:id])
     if @badge
@@ -28,6 +39,7 @@ Embadge::App.controllers :badges do
   end
 
   get :github, map: '/v1/:username/:repo/:branch/:package', provides: :svg, cache: true do
+    expires 43200 # Cache for 12 hours
     cache_key { [params[:username], params[:repo], params[:branch], params[:package]].join('$') }
 
     main_key = [params[:username], params[:repo], params[:branch]].join('$')
@@ -133,14 +145,18 @@ Embadge::App.controllers :badges do
     end
   end
 
-  get :new do
-    if is_logged_in?
-      @badge = Badge.new
-      render :new
+  put :update, with: :id do
+    @badge = Badge.find(params[:id])
+    if @badge
+      if @badge.update_attributes(params[:badge])
+        redirect(url(:badges, :index))
+      else
+        flash.now[:error] = "Failed to update"
+        render 'badges/edit'
+      end
     else
-      status 401
-      flash[:error] = "You need to log in to create a badge."
-      redirect(url(:static, :index))
+      flash[:warning] = "Does not exist"
+      halt 404
     end
   end
 end

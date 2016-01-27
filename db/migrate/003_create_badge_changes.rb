@@ -7,6 +7,7 @@ class CreateBadgeChanges < ActiveRecord::Migration
       t.string :version_end
       t.string :version_range
       t.string :status, default: 'proposed'
+      t.text :comment
       t.timestamps
     end
   end

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.string   "version_end"
     t.string   "version_range"
     t.string   "status",        default: "proposed"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

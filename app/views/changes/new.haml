@@ -1,2 +1,6 @@
 %h2 Propose Change
-= partial 'badge_infos/form', locals: {badge: @badge}
+= flash_tag(:error)
+= form_for @change, url(:changes, :create, id: @badge.id), id: 'new_change' do |f|
+  = partial 'changes/form', locals: {f: f}
+
+%a{href: url(:badges, :show, id: @badge.id)} Back to badge

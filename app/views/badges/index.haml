@@ -18,6 +18,8 @@
         %th ID
         %th Link
         %th Badge
+        %th Last Updated
+        %th Actions
     %tbody
     - @badges.each do |badge|
       %tr
@@ -27,6 +29,11 @@
         %td
           %a{href: url(:badges, :show, id: badge.id)}
             %img{src: "/b/#{badge.id}.svg"}
+        %td
+          = time_ago_in_words badge.updated_at
+        %td
+          %a{href: url(:badges, :edit, id: badge.id)}
+            Edit
 - else
   %p
     You currently don't have any badges.

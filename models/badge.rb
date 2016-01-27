@@ -13,11 +13,18 @@ class Badge < ActiveRecord::Base
 
   def definition
     {
-      start: version_start.blank? ? nil : version_start,
-      end: version_end.blank? ? nil : version_end,
-      range: version_range.blank? ? nil : version_range,
-      label: self.label,
-      id: self.id
+      start: version_start,
+      end: version_end,
+      range: version_range,
+      label: label,
+      id: id
     }
+  end
+
+  def apply! change
+    self.version_start = change.version_start
+    self.version_end = change.version_end
+    self.version_range = change.version_range
+    self.save!
   end
 end
