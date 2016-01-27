@@ -17,21 +17,16 @@
       %tr
         %th ID
         %th Link
-        %th Public?
         %th Badge
-        %th Actions
     %tbody
     - @badges.each do |badge|
       %tr
         %td= link_to badge.id, url(:badges, :show, id: badge.id)
         %td
           %a{href: badge.url}= badge.title
-        %td= badge.is_public ? 'Yes' : 'No'
         %td
           %a{href: url(:badges, :show, id: badge.id)}
             %img{src: "/b/#{badge.id}.svg"}
-        %td
-          %span= link_to 'Delete', url(:badges, :delete, id: badge.id)
 - else
   %p
     You currently don't have any badges.

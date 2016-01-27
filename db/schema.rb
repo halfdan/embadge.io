@@ -13,24 +13,25 @@
 
 ActiveRecord::Schema.define(version: 4) do
 
-  create_table "badge_infos", force: :cascade do |t|
+  create_table "badge_changes", force: :cascade do |t|
     t.integer  "badge_id"
-    t.integer  "created_by"
-    t.boolean  "is_current"
+    t.integer  "user_id"
     t.string   "version_start"
     t.string   "version_end"
     t.string   "version_range"
+    t.string   "status",        default: "proposed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "badges", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "uuid"
     t.string   "label"
     t.string   "title"
     t.string   "url"
-    t.boolean  "is_public"
+    t.string   "version_start"
+    t.string   "version_end"
+    t.string   "version_range"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,10 +48,12 @@ ActiveRecord::Schema.define(version: 4) do
 
   create_table "votes", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "badge_info_id"
+    t.integer  "badge_change_id"
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "votes", ["user_id", "badge_change_id"], name: "index_votes_on_user_id_and_badge_change_id", unique: true
 
 end

@@ -10,7 +10,7 @@ Embadge::App.controllers :badges do
     end
   end
 
-  get :show, with: :id do
+  get :show, with: :id, map: '/badges' do
     @badge = Badge.find_by_id(params[:id])
     if @badge
       render 'show'
@@ -102,15 +102,19 @@ Embadge::App.controllers :badges do
   end
 
   post :create do
-    params[:badge]
-    @badge = Badge.new(params[:badge])
-    @badge.user = current_user
+    if is_logged_in?
+      @badge = Badge.new(params[:badge])
+      @badge.user = current_user
 
-    if @badge.save
-      redirect(url(:badges, :show, id: @badge.id))
+      if @badge.save
+        redirect(url(:badges, :show, id: @badge.id))
+      else
+        flash.now[:error] = "Nope"
+        render 'badges/new'
+      end
     else
-      flash.now[:error] = "Nope"
-      render 'badges/new'
+      status 401
+      flash.now[:error] = "Please sign in to create a badge."
     end
   end
 
@@ -132,16 +136,11 @@ Embadge::App.controllers :badges do
   get :new do
     if is_logged_in?
       @badge = Badge.new
-      @badge.badge_infos.build
       render :new
     else
       status 401
       flash[:error] = "You need to log in to create a badge."
       redirect(url(:static, :index))
     end
-  end
-
-  delete :delete, with: :id do
-
   end
 end

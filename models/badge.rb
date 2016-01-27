@@ -1,21 +1,21 @@
 class Badge < ActiveRecord::Base
 
   belongs_to :user
-  has_many :badge_infos
+  has_many :badge_changes
 
   # We want a title and url if the badge is to be publicly listed.
-  validates_presence_of :url
-  validates_presence_of :title
-  validates_presence_of :label
-
-  accepts_nested_attributes_for :badge_infos
+  validates :url, presence: true
+  validates :title, presence: true
+  validates :label, presence: true
+  validates :user, presence: true
+  validates_presence_of :version_start, if: -> { self.version_range.blank? }
+  validates_presence_of :version_range, if: -> { self.version_start.blank? }
 
   def definition
-    current = badge_infos.current.first
     {
-      start: current.version_start.blank? ? nil : current.version_start,
-      end: current.version_end.blank? ? nil : current.version_end,
-      range: current.version_range.blank? ? nil : current.version_range,
+      start: version_start.blank? ? nil : version_start,
+      end: version_end.blank? ? nil : version_end,
+      range: version_range.blank? ? nil : version_range,
       label: self.label,
       id: self.id
     }

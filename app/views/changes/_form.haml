@@ -1,5 +1,5 @@
 = flash_tag(:error)
-= form_for badge, url(:badges, :create), id: 'new_badge' do |f|
+= form_for badge, url(:badge_infos, :create), id: 'new_badge' do |f|
   = f.error_messages
   %div.form-group
     = f.label :label, caption: "Badge label"
@@ -10,15 +10,16 @@
   %div.form-group
     = f.label :url, caption: "URL this badge will appear on"
     = f.text_field :url, placeholder: 'http://myblog.com/ember-js-rocks', class: 'form-control'
-  %div.form-group
-    = f.label :version_start
-    = f.text_field :version_start, class: 'form-control'
-  %div.form-group
-    = f.label :version_end
-    = f.text_field :version_end, class: 'form-control'
-  %div.form-group
-    = f.label :version_range
-    = f.text_field :version_range, class: 'form-control'
+  = f.fields_for :badge_infos do |bi|
+    %div.form-group
+      = bi.label :version_start
+      = bi.text_field :version_start, class: 'form-control'
+    %div.form-group
+      = bi.label :version_end
+      = bi.text_field :version_end, class: 'form-control'
+    %div.form-group
+      = bi.label :version_range
+      = bi.text_field :version_range, class: 'form-control'
 
   %div.form-group
-    = f.submit "Submit", class: 'btn btn-default'
+    = f.submit "Submit", :class => 'btn btn-default'

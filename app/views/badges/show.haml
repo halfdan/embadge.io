@@ -6,7 +6,8 @@
 %p
   This badge was created by
   = link_to "@#{@badge.user.handle}", "https://github.com/#{@badge.user.handle}"
-  = time_ago_in_words @badge.created_at
+  and last updated
+  = time_ago_in_words @badge.updated_at
   ago.
 
 %p
@@ -19,6 +20,12 @@
 %p Embed this badge in your site:
 %pre
   &lt;object data="#{absolute_url(:badges, :render, id: @badge.id, format: :svg)}" type="image/svg+xml"&gt;&lt;/object&gt;
+
+%h3 Proposed changes
+
+
+The author will be notified of your proposed change to this badge. They can then either accept or reject your change. Other users can vote for your change. Once a proposed change has reached 3 votes it will be automatically accepted.
+
 
 - if is_logged_in?
   %hr
