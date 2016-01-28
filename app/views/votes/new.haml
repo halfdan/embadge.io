@@ -1,0 +1,6 @@
+%h2 Vote
+= flash_tag(:error)
+= form_for @vote, url(:votes, :create, id: @change.id), id: 'new_vote' do |f|
+  = partial 'votes/form', locals: {f: f}
+
+%a{href: url(:badges, :show, id: @change.badge.id)} Back to badge

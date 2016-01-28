@@ -7,10 +7,6 @@ module Embadge
         @current_user ||= User.find_by_id(session[:current_user])
       end
 
-      def reset_session
-
-      end
-
       def is_logged_in?
         return current_user.present?
       end

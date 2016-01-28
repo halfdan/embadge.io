@@ -4,7 +4,6 @@ Embadge::App.controllers :changes do
     if is_logged_in?
       @badge = Badge.find params[:id]
       @change = BadgeChange.new badge: @badge, user: current_user
-      @change.votes.build
       render 'new'
     else
       redirect url(:static, :index)
@@ -27,9 +26,9 @@ Embadge::App.controllers :changes do
     end
   end
 
-  put :accept, map: '/badges/:badge_id/change/:change_id/accept' do
+  put :accept, map: '/changes/:change_id/accept' do
   end
 
-  put :reject, map: '/badges/:badge_id/change/:change_id/reject' do
+  put :reject, map: '/changes/:change_id/reject' do
   end
 end
