@@ -1,24 +1,16 @@
 Embadge::App.controllers :badges do
+  before except: [:show, :static, :github, :webhook, :render] do
+    login_required
+  end
 
   get :index do
-    if is_logged_in?
-      @badges = current_user.badges.order('created_at DESC')
-      render 'index'
-    else
-      flash[:error] = "You need to log in to view your badges."
-      redirect(url(:static, :index))
-    end
+    @badges = current_user.badges.order('created_at DESC')
+    render 'index'
   end
 
   get :new do
-    if is_logged_in?
-      @badge = Badge.new
-      render :new
-    else
-      status 401
-      flash[:error] = "You need to log in to create a badge."
-      redirect(url(:static, :index))
-    end
+    @badge = Badge.new
+    render :new
   end
 
   get :show, with: :id, map: '/badges' do
@@ -114,19 +106,14 @@ Embadge::App.controllers :badges do
   end
 
   post :create do
-    if is_logged_in?
-      @badge = Badge.new(params[:badge])
-      @badge.user = current_user
+    @badge = Badge.new(params[:badge])
+    @badge.user = current_user
 
-      if @badge.save
-        redirect(url(:badges, :show, id: @badge.id))
-      else
-        flash.now[:error] = "Nope"
-        render 'badges/new'
-      end
+    if @badge.save
+      redirect(url(:badges, :show, id: @badge.id))
     else
-      status 401
-      flash.now[:error] = "Please sign in to create a badge."
+      flash.now[:error] = "Nope"
+      render 'badges/new'
     end
   end
 

@@ -49,9 +49,9 @@
           = time_ago_in_words change.created_at
           ago
         %td
-          - if is_logged_in? && change.user != current_user
+          - if logged_in? && change.user != current_user
             %button.btn.btn-xs.btn-primary +1
-          - if is_logged_in? && @badge.user == current_user
+          - if logged_in? && @badge.user == current_user
             %button.btn.btn-success.btn-xs Apply
             %button.btn.btn-danger.btn-xs Reject
 
@@ -59,6 +59,6 @@
 - else
   There are currently no proposed changes to this badge.
 
-- if is_logged_in?
+- if logged_in?
   %hr
   %p= link_to "My badges", url(:badges, :index)
