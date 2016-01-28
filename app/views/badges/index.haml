@@ -31,6 +31,7 @@
             %img{src: "/b/#{badge.id}.svg"}
         %td
           = time_ago_in_words badge.updated_at
+          ago
         %td
           %a{href: url(:badges, :edit, id: badge.id)}
             Edit

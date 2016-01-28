@@ -16,6 +16,10 @@ source 'https://rubygems.org'
 # Project requirements
 gem 'rake'
 
+# Test requirements
+gem 'rspec', :group => 'test'
+gem 'rack-test', :require => 'rack/test', :group => 'test'
+
 # Component requirements
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'

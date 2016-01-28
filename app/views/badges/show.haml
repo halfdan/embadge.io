@@ -50,7 +50,7 @@
           ago
         %td
           - if logged_in? && change.user != current_user
-            %button.btn.btn-xs.btn-primary +1
+            %a.btn.btn-xs.btn-primary{href: url()} +1
           - if logged_in? && @badge.user == current_user
             %button.btn.btn-success.btn-xs Apply
             %button.btn.btn-danger.btn-xs Reject

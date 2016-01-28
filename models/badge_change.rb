@@ -25,6 +25,7 @@ class BadgeChange < ActiveRecord::Base
   # Copies attributes over to badge
   def accept!
     badge.apply! self
+    badge.badge_changes.proposed.each(&:reject!)
     self.status = :accepted
     self.save
   end

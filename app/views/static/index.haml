@@ -7,9 +7,12 @@
 %p
   Create a badge, embed it in your post, maintain it and let the community update the badge when its information is out of date.
 %p
-  %a{class:"btn", href: '/auth/github'}
-    %span{class:"fa fa-github"}
-    Sign in with Github
+  - if logged_in?
+    %a{href: url(:badges, :index)} Show Badges
+  - else
+    %a{class:"btn", href: '/auth/github'}
+      %span{class:"fa fa-github"}
+      Sign in with Github
 
 %h2#github Github Badges
 %p The embadge API supports generating badges for your Ember projects on Github. The API for github badges is
