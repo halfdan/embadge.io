@@ -1,0 +1,16 @@
+%h3 Recently added badges
+
+%p Here are the #{@badges.size} most recent badges.
+
+%table.table
+  %thead
+    %tr
+      %td Badge
+      %td Location
+  %tbody
+    - @badges.each do |badge|
+      %tr
+        %td
+          %a{href: url(:badges, :show, id: badge.id)}
+            %img{src: "/b/#{badge.id}.svg"}
+        %td= link_to badge.title.truncate(75), badge.url, rel: 'nofollow'

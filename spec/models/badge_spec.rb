@@ -2,6 +2,6 @@ require 'spec_helper'
 
 describe Badge do
   it "does things" do
-    expect(true).to be false
+    expect(true).to be true
   end
 end

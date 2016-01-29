@@ -56,7 +56,3 @@
             %a.btn.btn-danger.btn-xs{href: url(:changes, :reject, change_id: change.id)} Reject
 - else
   There are currently no proposed changes to this badge.
-
-- if logged_in?
-  %hr
-  %p= link_to "My badges", url(:badges, :index)

@@ -12,13 +12,15 @@ body {
 
 nav a, nav a:hover, nav a:visited {
   color: #666;
+  line-height: 2rem;
+  vertical-align: middle;
 }
 
 .nav-link:hover {
   text-decoration: underline;
 }
 
-h1, h2, h3 {
+main h1, main h2, main h3 {
   margin: 25px 0 10px 0;
   font-weight: bold;
 }
@@ -37,9 +39,11 @@ h1, h2, h3 {
   border-bottom: .05rem solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
-.header h3 {
+h3.site-title a {
   margin-top: 0;
   margin-bottom: 0;
+  color: black;
+  font-size: 2rem;
   line-height: 3rem;
 }
 

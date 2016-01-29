@@ -25,7 +25,7 @@
       %tr
         %td= link_to badge.id, url(:badges, :show, id: badge.id)
         %td
-          %a{href: badge.url}= badge.title
+          %a{href: badge.url}= badge.title.truncate(75)
         %td
           %a{href: url(:badges, :show, id: badge.id)}
             %img{src: "/b/#{badge.id}.svg"}

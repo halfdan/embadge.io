@@ -13,9 +13,11 @@
       .header.clearfix.row
         %nav
           %ul.nav.nav-pills.pull-xs-right
+            %li.nav-item
+              %a.nav-link{href: url(:badges, :recent)} Recent Badges
             - if logged_in?
               %li.nav-item
-                %a.nav-link{href: url(:badges, :index)} Show Badges
+                %a.nav-link{href: url(:badges, :index)} My Badges
               %li.nav-item
                 %a.nav-link{href: url(:auth, :logout)} Logout
             - else
@@ -23,7 +25,7 @@
                 %a.nav-link{href: '/auth/github'}
                   %span{class:"fa fa-github"}
                   Sign in with Github
-        %h3.text-muted
-          %a.text-muted{href: '/'} embadge.io
+        %h3.site-title
+          %a{href: '/'} embadge.io
       .row
         %main= yield

@@ -1,5 +1,5 @@
 Embadge::App.controllers :badges do
-  before except: [:show, :static, :github, :webhook, :render] do
+  before except: [:show, :static, :github, :webhook, :render, :recent] do
     login_required
   end
 
@@ -11,6 +11,11 @@ Embadge::App.controllers :badges do
   get :new do
     @badge = Badge.new
     render :new
+  end
+  
+  get :recent do
+    @badges = Badge.where.not(url: nil).order(created_at: :desc).limit(25)
+    render 'badges/recent'
   end
 
   get :show, with: :id, map: '/badges' do
