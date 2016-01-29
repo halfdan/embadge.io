@@ -4,21 +4,84 @@
   box-sizing: border-box;
 }
 
+/* Space out content a bit */
 body {
-  background: white;
-  font-family: 'Georgia', serif;
-  margin: 0;
-  padding: 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
-#content {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  padding: 20px;
+nav a, nav a:hover, nav a:visited {
+  color: #666;
 }
 
-h1, h2, h3, h4 {
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  margin: 25px 0 10px 0;
+  font-weight: bold;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 1rem;
+  border-bottom: .05rem solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 3rem;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 1.5rem;
+  color: #777;
+  border-top: .05rem solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 48em) {
+  .container {
+    max-width: 46rem;
+  }
+}
+.container-narrow > hr {
+  margin: 2rem 0;
+}
+
+pre {
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 48em) {
+  /* Remove the padding we set earlier */
+  .header,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 2rem;
+  }
+}
+
+body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -27,74 +90,8 @@ h1 a, h1 a:hover, h1 a:visited {
   color: inherit;
 }
 
-h1 {
-  font-size: 72px;
-  line-height: 1.7;
-  margin: 0;
-  padding: 0;
-
-}
-
-h2, h3, h4 {
-  color: #333;
-}
-
-p {
-  color: #444;
-  line-height: 1.6;
-  font-size: 18px;
-}
-
-li {
-  line-height: 1.6;
-  font-size: 18px;
-}
-
 main a, main a:hover, main a:visited {
   color: #d01040;
-}
-
-a.btn, a:visited.btn, a:hover.btn {
-  color: #fff;
-  background-color: #444;
-  border-color: rgba(0,0,0,0.2);
-  position: relative;
-  padding-left: 44px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 5px;
-  display: block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-a.btn>:first-child {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  line-height: 34px;
-  font-size: 1.6em;
-  text-align: center;
-  border-right: 1px solid rgba(0,0,0,0.2);
 }
 
 main > a:visited {

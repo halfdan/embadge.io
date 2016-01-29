@@ -44,3 +44,4 @@ gem 'omniauth-github'
 gem 'semantic_range'
 
 gem 'unirest'
+gem 'redis'

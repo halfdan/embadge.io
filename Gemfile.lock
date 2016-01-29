@@ -92,6 +92,7 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (10.4.2)
+    redis (3.2.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (3.3.0)
@@ -134,10 +135,8 @@ DEPENDENCIES
   padrino (= 0.13.1)
   rack-test
   rake
+  redis
   rspec
   semantic_range
   sqlite3
   unirest
-
-BUNDLED WITH
-   1.11.2

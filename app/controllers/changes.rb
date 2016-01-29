@@ -23,17 +23,26 @@ Embadge::App.controllers :changes do
     end
   end
 
-  put :accept, map: '/changes/:change_id/accept' do
+  get :vote, map: '/changes/:change_id/vote' do
     change = BadgeChange.proposed.find(params[:change_id])
-    if change && change.badge.user == current_user
-      change.accept!
+    if change && current_user.can_vote_for?(change)
+      current_user.vote_for change
     end
   end
 
-  put :reject, map: '/changes/:change_id/reject' do
+  get :accept, map: '/changes/:change_id/accept' do
+    change = BadgeChange.proposed.find(params[:change_id])
+    if change && change.badge.user == current_user
+      change.accept!
+      redirect(url(:badges, :show, id: @change.badge.id))
+    end
+  end
+
+  get :reject, map: '/changes/:change_id/reject' do
     change = BadgeChange.proposed.find(params[:change_id])
     if change && change.badge.user == current_user
       change.reject!
+      redirect(url(:badges, :show, id: @change.badge.id))
     end
   end
 end

@@ -15,4 +15,14 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def can_vote_for?(change)
+
+  end
+
+  def vote_for(change)
+    if can_vote_for? change
+      Vote.create user: self, badge_change: change
+    end
+  end
 end

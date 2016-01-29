@@ -4,7 +4,7 @@ module Embadge
   class App
     module AuthHelper
       def current_user
-        @current_user ||= User.find_by_id(session[:current_user])
+        @current_user ||= User.find_by_id(session[:user_id])
       end
 
       def logged_in?
@@ -16,6 +16,12 @@ module Embadge
           store_location!
           access_denied
         end
+      end
+
+      def log_out
+        session.delete(:user_id)
+        @current_user = nil
+        redirect(url(:static, :index))
       end
 
       ##

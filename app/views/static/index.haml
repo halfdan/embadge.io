@@ -6,20 +6,13 @@
   %a{:href => "https://github.com/halfdan/embadge.io"} on Github
 %p
   Create a badge, embed it in your post, maintain it and let the community update the badge when its information is out of date.
-%p
-  - if logged_in?
-    %a{href: url(:badges, :index)} Show Badges
-  - else
-    %a{class:"btn", href: '/auth/github'}
-      %span{class:"fa fa-github"}
-      Sign in with Github
 
 %h2#github Github Badges
 %p The embadge API supports generating badges for your Ember projects on Github. The API for github badges is
 
 %pre https://embadge.io/v1/:user/:repo/:branch/:package.svg
 
-%dl.dl-horizontal
+%dl
   %dt user
   %dd Your Github username or organization.
 
@@ -46,7 +39,7 @@ to invalidate our cache and update your badge:
 %p The API supports HTTPS and is accessed from is
 %pre https://embadge.io/v1/badge.svg?param=...
 
-%dl.dl-horizontal
+%dl
   %dt label
   %dd Used to define the text label shown on the badge (default: 'ember-versions')
 
@@ -60,7 +53,7 @@ to invalidate our cache and update your badge:
   %dd (Optional) Valid semver range (e.g. "^2.3.0") noting a supported range of versions. If given, "start" and "end" will be ignored
 
 %h2#examples Examples
-%dl.dl-horizontal
+%dl
   %dt Start version
   %dd
     %a{:href => "/v1/badge.svg?start=1.13.0"}
@@ -85,8 +78,6 @@ to invalidate our cache and update your badge:
 %h3#browser Browser
 %p In order to easily add embadge.io to your website you can include the following script in the body:
 %pre &lt;script src="//embadge.io/v1/badge.js" type="text/javascript"&gt;&lt;/script&gt;
-%br/
-%br/
 %p
   This will search your page for
   %code span

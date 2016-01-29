@@ -50,12 +50,10 @@
           ago
         %td
           - if logged_in? && change.user != current_user
-            %a.btn.btn-xs.btn-primary{href: url()} +1
+            %a.btn.btn-xs.btn-primary{href: url(:changes, :vote, change_id: change.id)} +1
           - if logged_in? && @badge.user == current_user
-            %button.btn.btn-success.btn-xs Apply
-            %button.btn.btn-danger.btn-xs Reject
-
-
+            %a.btn.btn-success.btn-xs{href: url(:changes, :accept, change_id: change.id)} Apply
+            %a.btn.btn-danger.btn-xs{href: url(:changes, :reject, change_id: change.id)} Reject
 - else
   There are currently no proposed changes to this badge.
 
