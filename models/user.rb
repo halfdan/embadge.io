@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def can_vote_for?(change)
-
+    change.votes.where(user: self).count == 0
   end
 
   def vote_for(change)

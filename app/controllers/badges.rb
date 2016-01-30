@@ -12,7 +12,7 @@ Embadge::App.controllers :badges do
     @badge = Badge.new
     render :new
   end
-  
+
   get :recent do
     @badges = Badge.where.not(url: nil).order(created_at: :desc).limit(25)
     render 'badges/recent'

@@ -17,11 +17,15 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # Test requirements
-gem 'rspec', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+group :test do
+  gem 'fabrication'
+  gem 'faker'
+  gem 'rspec'
+  gem 'rack-test', require: 'rack/test'
+end
 
 # Component requirements
-gem 'activerecord', '>= 3.1', :require => 'active_record'
+gem 'activerecord', '>= 3.1', require: 'active_record'
 gem 'sqlite3'
 gem 'haml'
 
