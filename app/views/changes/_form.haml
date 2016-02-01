@@ -1,5 +1,10 @@
 = f.error_messages
 %div.form-group
+  = f.label :comment
+  = f.text_area :comment, class: 'form-control', placeholder: "Explain why you think the badge needs to be updated."
+%hr
+%p You can enter a start and an optional end version or a <a href="https://docs.npmjs.com/misc/semver#Ranges">version range</a>. Versions must be given in valid semver format (x.y.z).
+%div.form-group
   = f.label :version_start
   = f.text_field :version_start, class: 'form-control'
 %div.form-group
@@ -8,9 +13,6 @@
 %div.form-group
   = f.label :version_range
   = f.text_field :version_range, class: 'form-control'
-%div.form-group
-  = f.label :comment
-  = f.text_area :comment, class: 'form-control'
 
 %div.form-group
   = f.submit "Submit", class: 'btn btn-default'

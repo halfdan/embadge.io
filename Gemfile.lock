@@ -145,6 +145,3 @@ DEPENDENCIES
   semantic_range
   sqlite3
   unirest
-
-BUNDLED WITH
-   1.11.2
