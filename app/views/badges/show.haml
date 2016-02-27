@@ -24,13 +24,12 @@
 %p Embed this badge in your site:
 %pre
   &lt;object data="#{absolute_url(:badges, :render, id: @badge.id, format: :svg)}" type="image/svg+xml"&gt;&lt;/object&gt;
-
-or
-
+%p or
 %pre
-  &lt;a href="#{absolute_url(:badges, :show, id: @badge.id)}"&gt;
-    &lt;img src="#{absolute_url(:badges, :render, id: @badge.id, format: :svg)}" alt="Ember Community Badge"&gt;&lt;/img&gt;
-  &lt;/a&gt;
+  :preserve
+    &lt;a href="#{absolute_url(:badges, :show, id: @badge.id)}"&gt;
+      &lt;img src="#{absolute_url(:badges, :render, id: @badge.id, format: :svg)}" alt="Ember Community Badge"&gt;&lt;/img&gt;
+    &lt;/a&gt;
 
 %h3 Proposed changes
 
