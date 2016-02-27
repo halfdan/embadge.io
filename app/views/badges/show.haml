@@ -18,8 +18,10 @@
   - if @badge.user == current_user
     %a{href: url(:badges, :edit, id: @badge.id)} Edit the badge!
   - else
-    %a{href: url(:changes, :new, id: @badge.id)} Propose a change!
-
+    - if logged_in?
+      %a{href: url(:changes, :new, id: @badge.id)} Propose a change!
+    - else
+      %a{href: '/auth/github'} Sign in and propose a change!
 %h3 Embed
 %p Embed this badge in your site:
 %pre
